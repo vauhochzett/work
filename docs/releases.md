@@ -2,7 +2,7 @@
 
 ## 1.1: Late night work support
 
-Currently released version: `1.1.0` (2024-06-06)
+Currently released version: `1.1.2` (2025-04-21)
 
 ### Breaking changes and deprecations
 
@@ -101,6 +101,7 @@ Note that, when `edit`ing, you may only enter `24:00` as an end time – but no 
 
 ### Other features
 
+- When close to midnight, you can `start` or `switch` a run on the following day by entering, e.g., `start 24:05`. The start time still may not be more than 10 minutes in the future.
 - You can now force stopping with `stop --force` and `switch --force` if the added entry would overlap a stored one.
 - More human-readable error messages
 	+ Errors raised when trying to add overlapping entries will now always be nicely formatted, even in corner cases.
@@ -113,6 +114,7 @@ Note that, when `edit`ing, you may only enter `24:00` as an end time – but no 
 ### Internals
 
 - Debug switches are now set with environment variables.
+- Run file parsing now allows spaces around the start time.
 
 
 ## 1.0: New name on PyPI and the (symbolic) "version 1"
