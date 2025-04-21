@@ -31,16 +31,17 @@
 
 ## Installation
 
-Using [pipx](https://pipx.pypa.io/) for the installation is recommended:
+Using [pipx](https://pipx.pypa.io/) or [uv](https://docs.astral.sh/uv/) for the installation is recommended:
 
-```
-pipx install work
+```sh
+pipx install work        # option 1: pipx
+uv tool install work     # option 2: uv tool / uvx
 ```
 
 Of course, installing with `pip` works as well:
 
-```
-pip install --user work
+```sh
+pip install --user work  # option 3: pip
 ```
 
 ## Getting Started
