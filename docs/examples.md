@@ -27,10 +27,10 @@ Furthermore, we worked the rest of the day on our project and developed new feat
 To retroactively add the entries, we type:
 
 ```
-$ work add --date yesterday 10 10:30 -c project -m "Discussion with colleague"
+$ work add --day yesterday 10 10:30 -c project -m "Discussion with colleague"
 Added a record from 10:00 to 10:30 yesterday
 
-$ work add --date yesterday 10:30 16 -c project -m "Development"
+$ work add --day yesterday 10:30 16 -c project -m "Development"
 Added a record from 10:30 to 16:00 yesterday
 ```
 

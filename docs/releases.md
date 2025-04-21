@@ -234,7 +234,7 @@ Note that, as seen in the examples above, filtering supports glob patterns such 
 - The parsing of day names (e.g., "monday") and dates (e.g., "12.") were merged.
 - Most visible impact: the flags `-d/--date` and `-D/--day` have been merged into one (`-d/--day`).
 	+ The combined flag supports the combination of all valid inputs.
-	+ E.g., try `--date yesterday`, `-d tue`, or `-d 15.`.
+	+ E.g., try `--day yesterday`, `--day 15.`, or `-d tue`.
 	+ The short flag `-D` and the long flag `--date` are deprecated and will be removed in a future release.
 - Small but impactful effect: Most date-dependent flags (e.g., `--period`, `--since`) that previously understood only dates now also support day names.
 	+ E.g., try `list --since sat` or `free-days --add-vacation mon wed`
