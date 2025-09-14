@@ -8,6 +8,8 @@
 
 **PyPI package**: <https://pypi.org/project/work/>
 
+**Releases & issues**: <https://github.com/vauhochzett/work-releases>
+
 ---
 
 ## Key concepts
