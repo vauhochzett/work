@@ -1,8 +1,129 @@
 # Release History
 
+## 1.2: Half free days, filtering in interactive modes, and a new export format
+
+Currently released version: `1.2.0` (2026-10-09)
+
+### Breaking changes and deprecations
+
+- `--month` now expects a month with an optional year (`m[/Y]`).
+- `free-days --add-vacation` now always expects a begin and an end day.
+- `export` now expects a format argument.
+- Manual edits of the log no longer trigger a warning. Use the new `verify` mode to check whether the log is valid.
+
+### Half free days
+
+Vacations and holidays can now cover only half a day:
+
+```
+$ work free-days --add-holiday 24.12. 0,5    # half-day holiday
+Added half holiday on 24.12.2026
+
+$ work free-days --add-vacation-day fri 0,5  # half-day vacation
+Added half vacation day on 09.10.2026
+
+$ work free-days --add-vacation 12. 14.      # --add-vacation now expects begin and end
+Added vacation from 12.10.2026 to 14.10.2026
+
+$ work free-days --list
+Holidays (1 day / 0.5 day equivalents):
+  24.12.2026 (0,5)
+
+Vacations (4 days / 3.5 day equivalents):
+  09.10.2026 (0,5)
+  12.10 – 14.10.2026 (3 days)
+
+Total: 5 free days (4.0 day equivalents), 0 reduced hour days
+```
+
+A half-day vacation may be on the same day as a half-day holiday.
+Then, the expected hours will be 0.
+All other combinations of free days still may not overlap.
+
+### Filtering in `edit` and `remove`
+
+`edit` and `remove` now support `--filter-category` / `--Fc` and `--filter-message` / `--Fm` to preselect entries.
+You still have to manually select individual entries or type `all`:
+
+```
+$ work edit -1 --filter-message "*plan*"      # smart case, so this also matches "...Plan..."
+Edit mode – Thursday, 08.10.2026
+
+  [0] 09:00 – 10:30 (meet) "Sprint planning"
+      10:30 – 12:15 (dev) "Ticket 123"        # does not match, so it can't be selected
+  [1] 13:00 – 13:30 (meet) "Daily Plan"
+      13:30 – 17:00 (dev) "Ticket 123"
+
+Enter nothing to cancel, or
+Enter one or more indices [0..1] separated by a space, or
+Enter "all" to select all, or "last" for the last.
+
+Which entries? > last  # selects "Daily", the last matching entry
+```
+
+Tip: If you combine this with `--all`, you skip interactive selection to quickly edit or remove all entries matching a specific criterion.
+
+### New export format
+
+There is a second export format option: `tng`.
+This format is more readable and includes vacations as explicit entries:
+
+```
+$ work export tng --period 15.12.2025 18.12.2025
+* Mo. 15.12.
+09:00 - 12:30 project Code review
+13:15 - 17:45 project Pair programming
+
+* Di. 16.12.
+08:30 - 12:30 project Release preparation
+16:00 - 20:00 urlaub
+
+* Mi. 17.12.
+08:00 - 16:00 urlaub
+
+* Do. 18.12.
+09:00 - 12:00 project Release preparation
+13:00 - 14:00 project Retro
+14:00 - 17:00 internal Retreat
+```
+
+Use `work export csv` to export using the old CSV format.
+
+### Configurable rounding precision
+
+The rounding precision when using `now` for the time can now be configured (in minutes, from 1 to 60).
+Use `config --see rounding-precision` to check what is configured.
+
+For example:
+```
+$ work config --see rounding-precision
+3 minutes
+
+$ work start now       # assuming the current time is 12:13
+Started work at 12:12
+```
+
+### Output changes
+
+- `list --with-breaks` now marks breaks with a mid dot (`·`) instead of a tilde (`~`).
+- `start` and `switch` now only print the start time, without the date.
+- `add` now also prints the recorded time, e.g., `Added a record [...] (1 h 30 m recorded)`.
+
+
+### Internals
+
+- The log is no longer checksummed to prevent manual edits.
+- Log reading has become more strict to ensure that only sorted and overlap-free records exist even after manual edits.
+
+### Fixed bugs
+
+- `edit` / `remove`: When filtering, the selection no longer offers entries that are not shown.
+- `switch` at the start time with a different restart time no longer simply cancels the run.
+
+
 ## 1.1: Late night work support
 
-Currently released version: `1.1.2` (2025-04-21)
+Final release version: `1.1.2` (2025-04-21)
 
 ### Breaking changes and deprecations
 

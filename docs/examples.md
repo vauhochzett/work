@@ -249,8 +249,8 @@ To make sure that overtime and undertime are correctly calculated, we can add th
 $ work free-days --add-holiday 21.
 Added holiday on 21.06.2022
 
-$ work free-days --add-vacation 24.
-Added vacation on 24.06.2022
+$ work free-days --add-vacation-day 24. 1
+Added vacation day on 24.06.2022
 ```
 
 This also shows us that date parsing is *relative to the current day*, allowing us to just state "24." for "24.06.2022".
