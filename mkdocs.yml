@@ -4,6 +4,7 @@ site_url: https://vauhoch.zett.cc/work/
 nav:
   - Home: index.md
   - Examples: examples.md
+  - Configuration: configuration.md
   - Release History: releases.md
 
 theme:
