@@ -2,7 +2,7 @@
 
 ## 1.2: Half free days, filtering in interactive modes, and a new export format
 
-Currently released version: `1.2.0` (2026-10-09)
+Currently released version: `1.2.1` (2026-10-09)
 
 ### Breaking changes and deprecations
 
@@ -119,6 +119,7 @@ Started work at 12:12
 
 - `edit` / `remove`: When filtering, the selection no longer offers entries that are not shown.
 - `switch` at the start time with a different restart time no longer simply cancels the run.
+- A missing configuration directory is now created if it doesn't exist yet.
 
 
 ## 1.1: Late night work support
