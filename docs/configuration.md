@@ -43,9 +43,9 @@ $ $EDITOR (work config --path)  # edit the configuration
 
 ### Expected hours
 
-The hours you are expected to work on each day of the week. Used, e.g., for over-/undertime calculation.
+The hours you are expected to work on each day of a regular workweek. Used, e.g., for over-/undertime calculation.
 
-This describes a regular workweek is *not* for public holidays or vacations. For these, use `free-days`.
+Note: If you want to manage public holidays or vacations, use `free-days`.
 
 ### Aliases
 
