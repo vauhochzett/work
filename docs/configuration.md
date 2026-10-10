@@ -70,6 +70,10 @@ You can also define multiple aliases:
 }
 ```
 
+Technically, macros (see below) can be used for this purpose as well, but aliases have two advantages.
+First, they are more robust as they are validated when the config is loaded.
+Second, they are shown in the output of `work --help`.
+
 ### Macros
 
 A *macro* is a keyword that is expanded to a full invocation of `work` with mode, arguments, and even flags.
