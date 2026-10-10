@@ -58,10 +58,10 @@ Enter nothing to cancel, or
 Enter one or more indices [0..1] separated by a space, or
 Enter "all" to select all, or "last" for the last.
 
-Which entries? > last  # selects "Daily", the last matching entry
+Which entries? > last  # selects "Daily Plan", the last matching entry
 ```
 
-Tip: If you combine this with `--all`, you skip interactive selection to quickly edit or remove all entries matching a specific criterion.
+Tip: If you combine this with `--all`, you skip interactive selection to directly select all entries matching your filter criteria.
 
 ### New export format
 
@@ -69,7 +69,7 @@ There is a second export format option: `tng`.
 This format is more readable and includes vacations as explicit entries:
 
 ```
-$ work export tng --period 15.12.2025 18.12.2025
+$ work export tng --period {15,18}.12.2025  # shorthand for 15.12.2025 18.12.2025
 * Mo. 15.12.
 09:00 - 12:30 project Code review
 13:15 - 17:45 project Pair programming
@@ -87,7 +87,7 @@ $ work export tng --period 15.12.2025 18.12.2025
 14:00 - 17:00 internal Retreat
 ```
 
-Use `work export csv` to export using the old CSV format.
+Use `work export csv` for the old CSV format.
 
 ### Configurable rounding precision
 
@@ -103,6 +103,8 @@ $ work start now       # assuming the current time is 12:13
 Started work at 12:12
 ```
 
+To learn more, see [Configuration &rarr; Rounding precision](../configuration#rounding-precision).
+
 ### Output changes
 
 - `list --with-breaks` now marks breaks with a mid dot (`·`) instead of a tilde (`~`).
@@ -112,8 +114,9 @@ Started work at 12:12
 
 ### Internals
 
-- The log is no longer checksummed to prevent manual edits.
-- Log reading has become more strict to ensure that only sorted and overlap-free records exist even after manual edits.
+- The log is no longer checksummed to detect manual edits.
+- Instead, log reading has become more strict to ensure that only sorted and overlap-free records exist even after manual edits.
+- Migration: Stored free days are converted to the new format supporting half days.
 
 ### Fixed bugs
 
