@@ -228,9 +228,7 @@ Note that, when `edit`ing, you may only enter `24:00` as an end time – but no 
 
 - When close to midnight, you can `start` or `switch` a run on the following day by entering, e.g., `start 24:05`. The start time still may not be more than 10 minutes in the future.
 - You can now force stopping with `stop --force` and `switch --force` if the added entry would overlap a stored one.
-- More human-readable error messages
-	+ Errors raised when trying to add overlapping entries will now always be nicely formatted, even in corner cases.
-	+ `list` now detects if the active run overlaps with a stored entry and prints an according error message.
+- Errors raised when trying to add overlapping entries will now always be nicely formatted, even in corner cases.
 
 ### Fixed bugs
 
