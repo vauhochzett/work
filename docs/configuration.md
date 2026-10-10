@@ -82,6 +82,13 @@ That means it must always start with a valid mode.
 ### Rounding precision
 
 When using `now` for the start/stop time, the current time is rounded (down when starting, up when stopping).
-`rounding_precision` sets the precision of this rounding, in minutes from `1` to `60`.
+`rounding_precision` sets the precision of this rounding in minutes (max: 60).
 
-E.g., with a rounding precision of 10 and a time of 12:09, `start now` will start the run at 12:00.
+The logic is to round the minutes to the next number that is divisible by the value you provide.
+To illustrate:
+
+| Precision | Rounded times          | `start now` at 10:16 |
+| --------- | ---------------------- | -------------------- |
+| 15        | 1:00, 1:15, 1:30, ...  | 10:15                 |
+| 10        | 1:00, 1:10, 1:20, ...  | 10:10                 |
+| 7         | 1:00, 1:07, 1:14, ...  | 10:14                 |
