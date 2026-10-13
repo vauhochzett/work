@@ -11,10 +11,10 @@ We open a shell and type:
 
 ```
 $ work start 10
-Started work at 10:00 today
+Started work at 10:00
 
 $ work switch 10:30 -c project -m "Discussion with colleague"
-Switched work at 10:30 today (30 m recorded)
+Switched work at 10:30 (30 m recorded)
 ```
 
 What has now happened is that we...
@@ -28,10 +28,10 @@ To retroactively add the entries, we type:
 
 ```
 $ work add --day yesterday 10 10:30 -c project -m "Discussion with colleague"
-Added a record from 10:00 to 10:30 yesterday
+Added a record from 10:00 to 10:30 yesterday (30 m recorded)
 
 $ work add --day yesterday 10:30 16 -c project -m "Development"
-Added a record from 10:30 to 16:00 yesterday
+Added a record from 10:30 to 16:00 yesterday (5 h 30 m recorded)
 ```
 
 Let's inspect what has now been logged:
@@ -60,26 +60,26 @@ To change the start time of the active run, we use `work start --force`.
 
 ```
 $ work start 1045 --force
-Started work at 10:45 today
+Started work at 10:45
 ```
 
 Now, we want to check if this did what we expected and `work` is currently "active" and a run has been started at 10:45.
 For that, we can do one of the following:
 
-1. `work status` checks *if a run is currently active* and additionally *informs us about our workday* (expected hours, week balance).
+1. `work status` checks *if a run is currently active* and additionally *informs us about our work week* (time left, week balance).
 
     ```
     $ date                                            # assume it is 11:38
     Wed, 22. Jun 2022, 11:38:20 CEST
 
     $ work status                                     # check work status (at 11:38)
-    Active since 10:45 today (0 h 53 m)
+    Active since 10:45 today (53 m)
     > 1 h 23 m worked until now – 1 entry on record   # includes log entries + active run
     > Last entry ends at 10:30                        # last entry stored in log
 
-    Workday status:
-      6 h 7 m left (until 17:45)                     # time to complete expected hours
-      Week balance: On time
+    Workweek status:
+        8 h 37 m left (until 20:15)                   # time to complete expected hours
+        Week balance: 2 h undertime
     ```
 
 2. `work list --include-active` (alias `ls`) lists logged entries but *includes the active run*.
@@ -87,8 +87,8 @@ For that, we can do one of the following:
     ```
     $ work ls --include-active
     Wed, 22.06.: 1 records (+ active run)
-    10:00 – 10:30 | 30 m     (project) "Discussion with colleague"
-    10:45 ~       | 0 h 53 m
+    10:00 – 10:30 | 30 m  (project) "Discussion with colleague"
+    10:45 ~       | 53 m
                   = 1 h 23 m
     ```
 
@@ -97,9 +97,9 @@ For that, we can do one of the following:
     ```
     $ work day
     Wed, 22.06.: 1 records (+ active run)
-    10:00 – 10:30 | 30 m     (project) "Discussion with colleague"
-                  ~ 15 m break
-    10:45 ~       | 0 h 53 m
+    10:00 – 10:30 | 30 m        (project) "Discussion with colleague"
+                  · 15 m break
+    10:45 ~       | 53 m
                   = 1 h 23 m (+ 15 m of breaks)
     ```
 
@@ -163,7 +163,7 @@ Mon, 20.06.: 2 records
 
 $ work add --force --day mon 11 13 -c project -m "Meeting"
 Existing record shortened (was 10:00 – 13:00): 10:00 – 11:00 (social) ""
-Added a record from 11:00 to 13:00 on Monday, 20.06.2022
+Added a record from 11:00 to 13:00 on Monday, 20.06.2022 (2 h recorded)
 
 $ work ls --day mon
 Mon, 20.06.: 3 records
@@ -181,15 +181,15 @@ Let's reword the message of both entries with the *interactive edit mode*:
 
 ```
 $ work edit --day mon
-Edit mode – on Monday, 20.06.2022
+Edit mode – Monday, 20.06.2022
 
-[0] 10:00 – 11:00 (social) ""
-[1] 11:00 – 13:00 (project) "Meeting"
-[2] 13:00 – 18:00 (project) ""
+  [0] 10:00 – 11:00 (social) ""
+  [1] 11:00 – 13:00 (project) "Meeting"
+  [2] 13:00 – 18:00 (project) ""
 
 Enter nothing to cancel, or
 Enter one or more indices [0..2] separated by a space, or
-Enter "all" to edit all entries.
+Enter "all" to select all, or "last" for the last.
 
 Which entries? > 1 2
 
@@ -198,11 +198,10 @@ Which entries? > 1 2
 # [...]
 New message or remove ["-"]? (Meeting) Development
 Change
-  11:00 – 13:00 (project) "Meeting"
+	11:00 – 13:00 (project) "Meeting"
 to
-  11:00 – 13:00 (project) "Development"
+	11:00 – 13:00 (project) "Development"
 ? [Y/n]
-
 Done
 
  > Selected record: 13:00 – 18:00 (project) ""
@@ -210,16 +209,15 @@ Done
 # [...]
 New message or remove ["-"]? () Development
 Change
-  13:00 – 18:00 (project) ""
+	13:00 – 18:00 (project) ""
 to
-  13:00 – 18:00 (project) "Development"
+	13:00 – 18:00 (project) "Development"
 ? [Y/n]
-
-Done
 Info: Detected mergeable entries in protocol. Merging...
     11:00 – 13:00 (project) "Development"
   + 13:00 – 18:00 (project) "Development"
   = 11:00 – 18:00 (project) "Development"
+Done
 Edited 2 records
 
 $ work ls --day mon
@@ -284,7 +282,7 @@ $ work hours --target 10 --pause 1
 30 m on record, 53 m active run | Current balance: 37 m remaining (2 h to work today)
 
 Assuming you take 1 h of breaks:
-> Work until 21:15 for a 10 hour day. | Balance then: 8 h overtime
+> Work until 21:15 for a 10:00 hour day. | Balance then: 8 h overtime
 ```
 
 Seems reasonable – let's go full steam and start our vacation one day early this week!
