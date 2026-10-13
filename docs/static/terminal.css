@@ -1,0 +1,7 @@
+/* Colors of work's terminal output (256-color codes in comments) */
+.term .t-bold   { font-weight: bold; }
+.term .t-blue   { color: #005fff; }  /*  27: active run */
+.term .t-gray   { color: #6c6c6c; }  /* 242: breaks, hints */
+.term .t-orange { color: #ff5f00; }  /* 202: undertime */
+.term .t-red    { color: #ff0000; }  /*   9: errors */
+.term .t-green  { color: #00af00; }  /*  34: success */

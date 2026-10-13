@@ -3,12 +3,15 @@
 `work` is configured with a JSON file `workrc` located in `$XDG_CONFIG_HOME` (if set) or in `~/.config` (otherwise).
 
 To see where your configuration is stored, run `work config --path`:
-```
-$ work config --path
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work config --path
 /home/user/.config/workrc
 
 $ $EDITOR (work config --path)  # edit the configuration
-```
+</code></pre>
+///
 
 
 ## Default configuration
@@ -51,12 +54,15 @@ Note: If you want to manage public holidays or vacations, use `free-days`.
 
 An *alias* is a shorthand for a mode, e.g., `ls` for `list`:
 
-```
-$ work ls
-Fri, 09.10.: 1 record
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work ls
+<span class="t-bold">Fri, 09.10.: 1 record</span>
 10:00 – 12:00 | 2 h   (project)
               = 2 h
-```
+</code></pre>
+///
 
 You can also define multiple aliases:
 

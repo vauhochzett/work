@@ -15,8 +15,10 @@ Currently released version: `1.2.1` (2026-10-09)
 
 Vacations and holidays can now cover only half a day:
 
-```
-$ work free-days --add-holiday 24.12. 0,5    # half-day holiday
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work free-days --add-holiday 24.12. 0,5    # half-day holiday
 Added half holiday on 24.12.2026
 
 $ work free-days --add-vacation-day fri 0,5  # half-day vacation
@@ -34,7 +36,8 @@ Vacations (4 days / 3.5 day equivalents):
   12.10 – 14.10.2026 (3 days)
 
 Total: 5 free days (4.0 day equivalents), 0 reduced hour days
-```
+</code></pre>
+///
 
 A half-day vacation may be on the same day as a half-day holiday.
 Then, the expected hours will be 0.
@@ -45,8 +48,10 @@ All other combinations of free days still may not overlap.
 `edit` and `remove` now support `--filter-category` / `--Fc` and `--filter-message` / `--Fm` to preselect entries.
 You still have to manually select individual entries or type `all`:
 
-```
-$ work edit -1 --filter-message "*plan*"      # smart case, so this also matches "...Plan..."
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work edit -1 --filter-message "*plan*"      # smart case, so this also matches "...Plan..."
 Edit mode – Thursday, 08.10.2026
 
   [0] 09:00 – 10:30 (meet) "Sprint planning"
@@ -58,8 +63,9 @@ Enter nothing to cancel, or
 Enter one or more indices [0..1] separated by a space, or
 Enter "all" to select all, or "last" for the last.
 
-Which entries? > last  # selects "Daily Plan", the last matching entry
-```
+Which entries? > last                         # selects "Daily Plan", the last matching entry
+</code></pre>
+///
 
 Tip: If you combine this with `--all`, you skip interactive selection to directly select all entries matching your filter criteria.
 
@@ -68,8 +74,10 @@ Tip: If you combine this with `--all`, you skip interactive selection to directl
 There is a second export format option: `tng`.
 This format is more readable and includes vacations as explicit entries:
 
-```
-$ work export tng --period {15,18}.12.2025  # shorthand for 15.12.2025 18.12.2025
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work export tng --period {15,18}.12.2025  # shorthand for 15.12.2025 18.12.2025
 * Mo. 15.12.
 09:00 - 12:30 project Code review
 13:15 - 17:45 project Pair programming
@@ -85,7 +93,8 @@ $ work export tng --period {15,18}.12.2025  # shorthand for 15.12.2025 18.12.202
 09:00 - 12:00 project Release preparation
 13:00 - 14:00 project Retro
 14:00 - 17:00 internal Retreat
-```
+</code></pre>
+///
 
 Use `work export csv` for the old CSV format.
 
@@ -95,13 +104,16 @@ The rounding precision when using `now` for the time can now be configured (in m
 Use `config --see rounding-precision` to check what is configured.
 
 For example:
-```
-$ work config --see rounding-precision
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work config --see rounding-precision
 3 minutes
 
 $ work start now       # assuming the current time is 12:13
 Started work at 12:12
-```
+</code></pre>
+///
 
 To learn more, see [Configuration &rarr; Rounding precision](../configuration#rounding-precision).
 
@@ -153,8 +165,10 @@ E.g., an entry `22:00 – 23:59` can be extended to midnight: `22:00 – 24:00`.
 An active run started on the previous day is now not considered an invalid state any more.
 Meaning, `status`, `list`, and `stop` work as expected:
 
-```
-$ work status  # assuming the current time is 02:13
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work status  # assuming the current time is 02:13
 Active since 22:00 yesterday (4 h 13 m)
 > 4 h 13 m worked until now – nothing on record
 
@@ -185,7 +199,8 @@ Wed, 05.06.: 1 records
               = 2 h
 
 Total: 2 records, 4 h worked
-```
+</code></pre>
+///
 
 Note that the *lingering run* heuristic (a check if a run that started the previous day was "forgotten") has been reworked.
 It now triggers only if a run started on the previous day gets longer than 8 hours.
@@ -194,8 +209,10 @@ It now triggers only if a run started on the previous day gets longer than 8 hou
 
 To allow `stop`ping at midnight or adding an entry that touches midnight, `24:00` is now understood and parsed correctly:
 
-```
-$ work status  # assume it is 23:50
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work status  # assume it is 23:50
 Active since 22:00 (1 h 50 m)
 > 7 h 50 m worked until now – 2 entries on record
 > Last entry ends at 22:00
@@ -203,15 +220,19 @@ Active since 22:00 (1 h 50 m)
 
 $ work stop 24:00
 Stopped work at 00:00 tomorrow (2 h recorded)  # let me know if you want this to read "24:00 today" ;)
-```
+</code></pre>
+///
 
 When `add`ing entries, you can now also enter multi-day entries (extending beyond midnight).
 E.g., to add a run from 22:00 yesterday to 02:30 today:
 
-```
-$ work add -1 22 26:30
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work add -1 22 26:30
 Added a record from 22:00 yesterday to 02:30 today
-```
+</code></pre>
+///
 
 You may enter any "hour" up to `29`. These are considered as relative to the start time (as is common in Japan), so `25:05` represents `01:05` on the following day.
 
@@ -272,8 +293,10 @@ Final release version: `0.101.1` (2023-07-21)
 
 For `edit` and `remove`, users are presented a list of entries that allows them to interactively select what they want to edit or remove concretely. E.g.:
 
-```
-$ work edit -1  # edit yesterday's record
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work edit -1  # edit yesterday's record
 Edit mode – Wednesday, 19.07.2023
 
 [0] 08:00 – 12:00 () "Various tasks"
@@ -284,7 +307,8 @@ Enter one or more indices [0..1] separated by a space, or
 Enter "all" to edit all entries, or "last" for the last.
 
 Which entries? >
-```
+</code></pre>
+///
 
 One small change can be seen immediately: the new keyword `"last"` allows easy selection of the last entry added that day.
 
@@ -292,20 +316,25 @@ More importantly, though, two new flags were added to both `edit` and `remove`: 
 
 Now, remove all entries recorded on, e.g., Monday with just one command:
 
-```
-$ work remove --day mon --all
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work remove --day mon --all
 Remove mode – Monday, 17.07.2023
 
 [0] 12:00 – 13:00 (project-A) ""
 
 Interactive selection skipped – selecting "all".
 Removed 1 record
-```
+</code></pre>
+///
 
 Or, perhaps even more useful, directly edit the last record added today:
 
-```
-$ work edit --last
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work edit --last
 Edit mode – Thursday, 20.07.2023
 
 [0] 12:00 – 14:00 () ""
@@ -316,7 +345,8 @@ Interactive selection skipped – selecting "last".
 
 New start time? (12:00)
 # ... etc.
-```
+</code></pre>
+///
 
 ### Filter with *smart case*
 
@@ -329,8 +359,10 @@ In short:
 
 E.g.:
 
-```
-$ work ls --since 1.1. --Fm "meet*"
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work ls --since 1.1. --Fm "meet*"
 Tue, 21.03.: 1 record
 11:30 – 12:30 | 1 h  (project-A) "Meeting"
               = 1 h
@@ -348,7 +380,8 @@ Tue, 21.03.: 1 record
               = 1 h
 
 Total: 1 record, 1 h worked
-```
+</code></pre>
+///
 
 Note that, as seen in the examples above, filtering supports glob patterns such as `[AC]` matching either `"A"` or `"C"`, or `*` that matches everything. [Read more](https://docs.python.org/3/library/fnmatch.html)
 
@@ -378,13 +411,16 @@ When adding a vacation that is longer than a week, though, the vacation period w
 
 Therefore, when adding a vacation and if it overlaps with non-working days, the user will be prompted and can choose to have them removed:
 
-```
-$ work free-days --add-vacation 31.12.22 5.1.
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work free-days --add-vacation 31.12.22 5.1.
 The vacation overlaps with configured non-working day(s): 01.01.2023 (Sunday)
 Should non-working days be removed from the vacation before it is added?
 [Y/n] y
 Added vacation from 31.12.2022 to 05.01.2023
-```
+</code></pre>
+///
 
 This is optional, as the behavior may not always be intended.
 
@@ -436,8 +472,10 @@ User-defined *aliases* and *macros* can now be added via the configuration, for 
 
 An *alias* is a *short name for a mode*, e.g. `ls` for `list`. Running `work --help` will show any configured aliases. For the example above, this would look as follows (shortened):
 
-```
-$ work --help
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work --help
 ...
 
 modes:
@@ -448,14 +486,18 @@ modes:
     status (s, st)      Print the current status
     ...
 
-```
+</code></pre>
+///
 
 They can be used in place of the command they replace:
 
-```
-$ work 1
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work 1
 Started work at 23:15 today
-```
+</code></pre>
+///
 
 Note that the hardcoded aliases defined in previous versions were removed and instead added to the default configuration.
 
@@ -465,10 +507,13 @@ By configuring custom aliases, the defaults can be overwritten.
 
 A *macro* is an *arbitrary expansion*, e.g. `vbw` could be configured to mean `view balance --week`. When a macro is used, it is replaced in the command line with the configured expansion before parsing the arguments, e.g.:
 
-```
-$ work s1  # "s1" -> "status --oneline" (see above)
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work s1  # "s1" -> "status --oneline" (see above)
 Inactive
-```
+</code></pre>
+///
 
 *Note: Macros and the mode argument cannot be combined on the command line. E.g., `status s1` would be invalid. That means a macro must always include a mode in its expansion, as seen above.*
 
@@ -493,19 +538,25 @@ Inactive
 When using the keyword `now`, the current time is rounded either up or down, depending on the command.
 
 For example, assuming it is 12:10:
-```
-$ work start now
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work start now
 Started work at 12:00 today  # rounded down
-```
+</code></pre>
+///
 
 Now, the rounding can be influenced with the new keywords `now+`, `now-`, and `now!`. By using them, one can force rounding up, rounding down, or disable rounding, respectively.
 
 Compare to above:
 
-```
-$ work start now!
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work start now!
 Started work at 12:10 today  # not rounded
-```
+</code></pre>
+///
 
 ### Improved listing of free days
 
@@ -516,8 +567,10 @@ Started work at 12:10 today  # not rounded
 
 For example:
 
-```
-$ work free-days --list
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work free-days --list
 Holidays (2 days):
   01.01.2022
   10.01.2022
@@ -527,7 +580,8 @@ Vacations (13 days):
   21.05 – 31.05.2022 (11 days)
 
 Total: 15 free days
-```
+</code></pre>
+///
 
 ### Other changes
 
@@ -580,8 +634,10 @@ Final release version: `0.99.2.post1` (2022-06-28)
 
 For example:
 
-```
-$ work view by-category --since 1.2.
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work view by-category --since 1.2.
 category            hours        %      records
 -----------------------------------------------
 project-A/coding    16 h 30 m    40%    17
@@ -592,21 +648,25 @@ project-B/slides    3 h 30 m     8%     4
 help                30 m         1%     1
 -----------------------------------------------
 Total               41 h                76
-```
+</code></pre>
+///
 
 Above, `∅` is used to represent entries without a category.
 
 We could combine this with a filter (more on the new filters below) to check how much we worked for `project-B`:
 
-```
-$ work view by-category --since 1.2. --Fc "project-B*"
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work view by-category --since 1.2. --Fc "project-B*"
 category            hours        %      records
 -----------------------------------------------
 project-B/coding    4 h 30 m     56%    7
 project-B/slides    3 h 30 m     44%    4
 -----------------------------------------------
 Total               8 h                 11
-```
+</code></pre>
+///
 
 #### `view balance`
 
@@ -616,8 +676,10 @@ Total               8 h                 11
 
 For example, assuming it is Tuesday, 2022-02-22:
 
-```
-$ work view balance --week
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work view balance --week
 Day      Date      Days    Expected    Worked       Balance graph
 -----------------------------------------------------------------------
 Mon      21.02.    1       8 h         8 h          |        |        |
@@ -629,12 +691,15 @@ Sat      26.02.    1       -           -            |        |        |
 Sun      27.02.    1       -           -            |        |        |
 -----------------------------------------------------------------------
 Total              7       40 h        13 h 45 m    26 h 15 m remaining
-```
+</code></pre>
+///
 
 Alternatively, we can take a look back to previous weeks, e.g.:
 
-```
-$ work view balance --period 3.1. 20.2.
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work view balance --period 3.1. 20.2.
 Week     Date range         Days    Expected    Worked       Balance graph
 --------------------------------------------------------------------------------
 w. 01    03.01. – 09.01.    7       32 h        32 h         |        |        |
@@ -646,12 +711,15 @@ w. 06    07.02. – 13.02.    7       40 h        42 h 30 m    |        |=      
 w. 07    14.02. – 20.02.    7       40 h        45 h         |        |=       |
 --------------------------------------------------------------------------------
 Total                       49      272 h       277 h        5 h overtime
-```
+</code></pre>
+///
 
 Longer periods are grouped by month:
 
-```
-$ work view balance --period 1.9.21 31.12.2021
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work view balance --period 1.9.21 31.12.2021
 Month    Date range             Days    Expected    Worked       Balance graph
 -------------------------------------------------------------------------------------
 Sep      01.09.21 – 30.09.21    30      176 h       177 h        |        |        |
@@ -660,7 +728,8 @@ Nov      01.11.21 – 30.11.21    30      176 h       180 h        |        |   
 Dec      01.12.21 – 31.12.21    31      144 h       100 h        |      ==|        |
 -------------------------------------------------------------------------------------
 Total                           122     664 h       625 h        39 h remaining
-```
+</code></pre>
+///
 
 ### Filtering for `list` (and `view`)
 
@@ -670,8 +739,10 @@ Total                           122     664 h       625 h        39 h remaining
 
 For example:
 
-```
-$ work ls
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work ls
 Tue, 22.02.: 3 records
 10:00 – 12:00 | 2 h   (project-B/slides)   "Slides for customer meeting on 2022-03-01"
 12:00 – 12:30 | 3 h   (project-A/coding)
@@ -688,7 +759,8 @@ $ work ls --Fc "project*" --Fm "*customer*"
 Tue, 22.02.: 1 record
 10:00 – 12:00 | 2 h   (project-B/slides)   "Slides for customer meeting on 2022-03-01"
               = 2 h
-```
+</code></pre>
+///
 
 ### Expanded date selection
 
@@ -742,8 +814,10 @@ Final release version: `0.98.1` (2021-12-18)
 
 For example:
 
-```
-$ work add 10 14 -c supre
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work add 10 14 -c supre
 $ work add 15 17:5 -m "ji"
 $ work edit
 Edit mode – today
@@ -756,7 +830,8 @@ Enter one or more indices [0..1] separated by a space, or
 Enter "all" to edit all entries.
 
 Which entries? > 
-```
+</code></pre>
+///
 
 ### New flags for `hours` calculation
 
@@ -767,8 +842,10 @@ Which entries? >
 
 For example (assume it is 14:17):
 
-```
-$ work start 12
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work start 12
 Started work at 12:00 today
 
 $ work hours --until 17
@@ -793,7 +870,8 @@ $ work hours --until 17 --target 6 --start 14 --pause 0:30
 Assuming you start at 14:00 and take 30 m of breaks:
 > You will have worked 4 h 30 m at target time 17:00.
 > Work until 18:30 for a 6:00 hour day.
-```
+</code></pre>
+///
 
 ### Changes
 
@@ -822,15 +900,17 @@ A new `--force` flag allows intentionally overriding some warnings:
 
 For example:
 
-```
-$ work ls
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work ls
 Fri, 28.05.: 1 records
 10:00 – 18:00 | 8 h  (original)
               = 8 h
 
 $ work add 14 15 -c split --force
 Existing record split up: 10:00 – 18:00 (original) ""
-  ➜  10:00 – 14:00  &  15:00 – 18:00
+  ➜  10:00 – 14:00  &amp;  15:00 – 18:00
 Added a record from 14:00 to 15:00 today
 
 $ work ls
@@ -839,7 +919,8 @@ Fri, 28.05.: 3 records
 14:00 – 15:00 | 1 h  (split)
 15:00 – 18:00 | 3 h  (original)
               = 8 h
-```
+</code></pre>
+///
 
 ### New `edit` handling
 
@@ -882,8 +963,10 @@ Final release version: `0.96.3`
 
 For example:
 
-```shell
-$ work recess --add-vacation 1.2. 3.2.
+/// html | div.highlight.term
+    markdown: html
+
+<pre><code>$ work recess --add-vacation 1.2. 3.2.
 $ work recess --add-reduced-day 4.2. 2.0
 $ work recess --list
 Vacation:
@@ -892,7 +975,8 @@ Vacation:
   03.02.2021
 Reduced hour days:
   04.02.2021 (2.0 hours)
-```
+</code></pre>
+///
 
 - Expected hours per weekday can now be configured in the RC file.
 
