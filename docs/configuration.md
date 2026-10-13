@@ -6,10 +6,10 @@ To see where your configuration is stored, run `work config --path`:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work config --path
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">config --path</span>
 /home/user/.config/workrc
 
-$ $EDITOR (work config --path)  # edit the configuration
+$ <span class="t-cmd">$EDITOR</span> <span class="t-op">(</span><span class="t-cmd">work</span> <span class="t-param">config --path</span><span class="t-op">)</span>  # edit the configuration
 </code></pre>
 ///
 
@@ -57,7 +57,7 @@ An *alias* is a shorthand for a mode, e.g., `ls` for `list`:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work ls
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">ls</span>
 <span class="t-bold">Fri, 09.10.: 1 record</span>
 10:00 – 12:00 | 2 h   (project)
               = 2 h

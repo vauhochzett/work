@@ -18,16 +18,16 @@ Vacations and holidays can now cover only half a day:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work free-days --add-holiday 24.12. 0,5    # half-day holiday
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">free-days --add-holiday 24.12. 0,5</span>    # half-day holiday
 Added half holiday on 24.12.2026
 
-$ work free-days --add-vacation-day fri 0,5  # half-day vacation
+$ <span class="t-cmd">work</span> <span class="t-param">free-days --add-vacation-day fri 0,5</span>  # half-day vacation
 Added half vacation day on 09.10.2026
 
-$ work free-days --add-vacation 12. 14.      # --add-vacation now expects begin and end
+$ <span class="t-cmd">work</span> <span class="t-param">free-days --add-vacation 12. 14.</span>      # --add-vacation now expects begin and end
 Added vacation from 12.10.2026 to 14.10.2026
 
-$ work free-days --list
+$ <span class="t-cmd">work</span> <span class="t-param">free-days --list</span>
 Holidays (1 day / 0.5 day equivalents):
   24.12.2026 (0,5)
 
@@ -51,7 +51,7 @@ You still have to manually select individual entries or type `all`:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work edit -1 --filter-message "*plan*"      # smart case, so this also matches "...Plan..."
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">edit -1 --filter-message</span> <span class="t-quote">"*plan*"</span>      # smart case, so this also matches "...Plan..."
 Edit mode – Thursday, 08.10.2026
 
   [0] 09:00 – 10:30 (meet) "Sprint planning"
@@ -77,7 +77,7 @@ This format is more readable and includes vacations as explicit entries:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work export tng --period {15,18}.12.2025  # shorthand for 15.12.2025 18.12.2025
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">export tng --period {15,18}.12.2025</span>  # shorthand for 15.12.2025 18.12.2025
 * Mo. 15.12.
 09:00 - 12:30 project Code review
 13:15 - 17:45 project Pair programming
@@ -107,10 +107,10 @@ For example:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work config --see rounding-precision
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">config --see rounding-precision</span>
 3 minutes
 
-$ work start now       # assuming the current time is 12:13
+$ <span class="t-cmd">work</span> <span class="t-param">start now</span>       # assuming the current time is 12:13
 Started work at 12:12
 </code></pre>
 ///
@@ -168,14 +168,14 @@ Meaning, `status`, `list`, and `stop` work as expected:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work status  # assuming the current time is 02:13
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">status</span>  # assuming the current time is 02:13
 Active since 22:00 yesterday (4 h 13 m)
 > 4 h 13 m worked until now – nothing on record
 
 Workweek status:
 	Done (0 h 11 m over)
 
-$ work list --since yesterday --include-active  # list yesterday and today, including the active run
+$ <span class="t-cmd">work</span> <span class="t-param">list --since yesterday --include-active</span>  # list yesterday and today, including the active run
 Tue, 04.06.: 0 records (+ active run)
 22:00 – 24:00 | 2 h  # this virtual "entry" will be highlighted in blue, as it's the active run
               = 2 h
@@ -186,10 +186,10 @@ Wed, 05.06.: 0 records (+ active run)
 
 Total: 2 records (+ active run), 4 h 13 m worked
 
-$ work stop now-  # stop now, but round down
+$ <span class="t-cmd">work</span> <span class="t-param">stop now-</span>  # stop now, but round down
 Stopped work at 02:00 today (4 h recorded)
 
-$ work list -s y  # short-hand for --since yesterday
+$ <span class="t-cmd">work</span> <span class="t-param">list -s y</span>  # short-hand for --since yesterday
 Tue, 04.06.: 1 records
 22:00 – 24:00 | 2 h
               = 2 h
@@ -212,13 +212,13 @@ To allow `stop`ping at midnight or adding an entry that touches midnight, `24:00
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work status  # assume it is 23:50
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">status</span>  # assume it is 23:50
 Active since 22:00 (1 h 50 m)
 > 7 h 50 m worked until now – 2 entries on record
 > Last entry ends at 22:00
 # [...]
 
-$ work stop 24:00
+$ <span class="t-cmd">work</span> <span class="t-param">stop 24:00</span>
 Stopped work at 00:00 tomorrow (2 h recorded)  # let me know if you want this to read "24:00 today" ;)
 </code></pre>
 ///
@@ -229,7 +229,7 @@ E.g., to add a run from 22:00 yesterday to 02:30 today:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work add -1 22 26:30
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">add -1 22 26:30</span>
 Added a record from 22:00 yesterday to 02:30 today
 </code></pre>
 ///
@@ -296,7 +296,7 @@ For `edit` and `remove`, users are presented a list of entries that allows them 
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work edit -1  # edit yesterday's record
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">edit -1</span>  # edit yesterday's record
 Edit mode – Wednesday, 19.07.2023
 
 [0] 08:00 – 12:00 () "Various tasks"
@@ -319,7 +319,7 @@ Now, remove all entries recorded on, e.g., Monday with just one command:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work remove --day mon --all
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">remove --day mon --all</span>
 Remove mode – Monday, 17.07.2023
 
 [0] 12:00 – 13:00 (project-A) ""
@@ -334,7 +334,7 @@ Or, perhaps even more useful, directly edit the last record added today:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work edit --last
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">edit --last</span>
 Edit mode – Thursday, 20.07.2023
 
 [0] 12:00 – 14:00 () ""
@@ -362,7 +362,7 @@ E.g.:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work ls --since 1.1. --Fm "meet*"
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">ls --since 1.1. --Fm</span> <span class="t-quote">"meet*"</span>
 Tue, 21.03.: 1 record
 11:30 – 12:30 | 1 h  (project-A) "Meeting"
               = 1 h
@@ -374,7 +374,7 @@ Mon, 22.05.: 2 records
 
 Total: 3 records, 1 h 30 m worked
 
-$ work ls --since 1.1. --Fc "*[AC]*" --Fm "Meet*"
+$ <span class="t-cmd">work</span> <span class="t-param">ls --since 1.1. --Fc</span> <span class="t-quote">"*[AC]*"</span> <span class="t-param">--Fm</span> <span class="t-quote">"Meet*"</span>
 Tue, 21.03.: 1 record
 11:30 – 12:30 | 1 h  (project-A) "Meeting"
               = 1 h
@@ -414,7 +414,7 @@ Therefore, when adding a vacation and if it overlaps with non-working days, the 
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work free-days --add-vacation 31.12.22 5.1.
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">free-days --add-vacation 31.12.22 5.1.</span>
 The vacation overlaps with configured non-working day(s): 01.01.2023 (Sunday)
 Should non-working days be removed from the vacation before it is added?
 [Y/n] y
@@ -475,7 +475,7 @@ An *alias* is a *short name for a mode*, e.g. `ls` for `list`. Running `work --h
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work --help
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">--help</span>
 ...
 
 modes:
@@ -494,7 +494,7 @@ They can be used in place of the command they replace:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work 1
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">1</span>
 Started work at 23:15 today
 </code></pre>
 ///
@@ -510,7 +510,7 @@ A *macro* is an *arbitrary expansion*, e.g. `vbw` could be configured to mean `v
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work s1  # "s1" -> "status --oneline" (see above)
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">s1</span>  # "s1" -> "status --oneline" (see above)
 Inactive
 </code></pre>
 ///
@@ -541,7 +541,7 @@ For example, assuming it is 12:10:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work start now
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">start now</span>
 Started work at 12:00 today  # rounded down
 </code></pre>
 ///
@@ -553,7 +553,7 @@ Compare to above:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work start now!
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">start now!</span>
 Started work at 12:10 today  # not rounded
 </code></pre>
 ///
@@ -570,7 +570,7 @@ For example:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work free-days --list
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">free-days --list</span>
 Holidays (2 days):
   01.01.2022
   10.01.2022
@@ -637,7 +637,7 @@ For example:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work view by-category --since 1.2.
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">view by-category --since 1.2.</span>
 category            hours        %      records
 -----------------------------------------------
 project-A/coding    16 h 30 m    40%    17
@@ -658,7 +658,7 @@ We could combine this with a filter (more on the new filters below) to check how
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work view by-category --since 1.2. --Fc "project-B*"
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">view by-category --since 1.2. --Fc</span> <span class="t-quote">"project-B*"</span>
 category            hours        %      records
 -----------------------------------------------
 project-B/coding    4 h 30 m     56%    7
@@ -679,7 +679,7 @@ For example, assuming it is Tuesday, 2022-02-22:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work view balance --week
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">view balance --week</span>
 Day      Date      Days    Expected    Worked       Balance graph
 -----------------------------------------------------------------------
 Mon      21.02.    1       8 h         8 h          |        |        |
@@ -699,7 +699,7 @@ Alternatively, we can take a look back to previous weeks, e.g.:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work view balance --period 3.1. 20.2.
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">view balance --period 3.1. 20.2.</span>
 Week     Date range         Days    Expected    Worked       Balance graph
 --------------------------------------------------------------------------------
 w. 01    03.01. – 09.01.    7       32 h        32 h         |        |        |
@@ -719,7 +719,7 @@ Longer periods are grouped by month:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work view balance --period 1.9.21 31.12.2021
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">view balance --period 1.9.21 31.12.2021</span>
 Month    Date range             Days    Expected    Worked       Balance graph
 -------------------------------------------------------------------------------------
 Sep      01.09.21 – 30.09.21    30      176 h       177 h        |        |        |
@@ -742,20 +742,20 @@ For example:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work ls
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">ls</span>
 Tue, 22.02.: 3 records
 10:00 – 12:00 | 2 h   (project-B/slides)   "Slides for customer meeting on 2022-03-01"
 12:00 – 12:30 | 3 h   (project-A/coding)
 14:00 – 15:00 | 45 m                       "Cleaned office"
               = 5 h 45 m
 
-$ work ls --Fc "project*"
+$ <span class="t-cmd">work</span> <span class="t-param">ls --Fc</span> <span class="t-quote">"project*"</span>
 Tue, 22.02.: 2 records
 10:00 – 12:00 | 2 h   (project-B/slides)   "Slides for customer meeting on 2022-03-01"
 12:00 – 12:30 | 3 h   (project-A/coding)
               = 5 h
 
-$ work ls --Fc "project*" --Fm "*customer*"
+$ <span class="t-cmd">work</span> <span class="t-param">ls --Fc</span> <span class="t-quote">"project*"</span> <span class="t-param">--Fm</span> <span class="t-quote">"*customer*"</span>
 Tue, 22.02.: 1 record
 10:00 – 12:00 | 2 h   (project-B/slides)   "Slides for customer meeting on 2022-03-01"
               = 2 h
@@ -817,9 +817,9 @@ For example:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work add 10 14 -c supre
-$ work add 15 17:5 -m "ji"
-$ work edit
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">add 10 14 -c supre</span>
+$ <span class="t-cmd">work</span> <span class="t-param">add 15 17:5 -m</span> <span class="t-quote">"ji"</span>
+$ <span class="t-cmd">work</span> <span class="t-param">edit</span>
 Edit mode – today
 
 [0] 10:00 – 14:00 (supre) ""
@@ -845,26 +845,26 @@ For example (assume it is 14:17):
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work start 12
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">start 12</span>
 Started work at 12:00 today
 
-$ work hours --until 17
+$ <span class="t-cmd">work</span> <span class="t-param">hours --until 17</span>
 0 m on record, 2 h 17 m active run | Balance: 5 h 43 m remaining (8 h to work today)
 > You will have worked 5 h at target time 17:00.
 
-$ work cancel
+$ <span class="t-cmd">work</span> <span class="t-param">cancel</span>
 Run cancelled
 
-$ work hours --until 17
+$ <span class="t-cmd">work</span> <span class="t-param">hours --until 17</span>
 0 m on record, 0 m active run | Balance: 8 h remaining (8 h to work today)
 
 Assuming you start now (14:15):
 > You will have worked 2 h 45 m at target time 17:00.
 
-$ work add 10 12
+$ <span class="t-cmd">work</span> <span class="t-param">add 10 12</span>
 Added a record from 10:00 to 12:00 today
 
-$ work hours --until 17 --target 6 --start 14 --pause 0:30
+$ <span class="t-cmd">work</span> <span class="t-param">hours --until 17 --target 6 --start 14 --pause 0:30</span>
 2 h on record, 0 m active run | Balance: 6 h remaining (8 h to work today)
 
 Assuming you start at 14:00 and take 30 m of breaks:
@@ -903,17 +903,17 @@ For example:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work ls
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">ls</span>
 Fri, 28.05.: 1 records
 10:00 – 18:00 | 8 h  (original)
               = 8 h
 
-$ work add 14 15 -c split --force
+$ <span class="t-cmd">work</span> <span class="t-param">add 14 15 -c split --force</span>
 Existing record split up: 10:00 – 18:00 (original) ""
   ➜  10:00 – 14:00  &amp;  15:00 – 18:00
 Added a record from 14:00 to 15:00 today
 
-$ work ls
+$ <span class="t-cmd">work</span> <span class="t-param">ls</span>
 Fri, 28.05.: 3 records
 10:00 – 14:00 | 4 h  (original)
 14:00 – 15:00 | 1 h  (split)
@@ -966,9 +966,9 @@ For example:
 /// html | div.highlight.term
     markdown: html
 
-<pre><code>$ work recess --add-vacation 1.2. 3.2.
-$ work recess --add-reduced-day 4.2. 2.0
-$ work recess --list
+<pre><code>$ <span class="t-cmd">work</span> <span class="t-param">recess --add-vacation 1.2. 3.2.</span>
+$ <span class="t-cmd">work</span> <span class="t-param">recess --add-reduced-day 4.2. 2.0</span>
+$ <span class="t-cmd">work</span> <span class="t-param">recess --list</span>
 Vacation:
   01.02.2021
   02.02.2021
