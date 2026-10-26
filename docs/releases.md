@@ -2,7 +2,7 @@
 
 ## 1.2: Half free days, filtering in interactive modes, and a new export format
 
-Currently released version: `1.2.1` (2026-10-09)
+Currently released version: `1.2.2` (2026-10-26)
 
 ### Breaking changes and deprecations
 
@@ -122,13 +122,15 @@ To learn more, see [Configuration &rarr; Rounding precision](../configuration#ro
 - `list --with-breaks` now marks breaks with a mid dot (`·`) instead of a tilde (`~`).
 - `start` and `switch` now only print the start time, without the date.
 - `add` now also prints the recorded time, e.g., `Added a record [...] (1 h 30 m recorded)`.
+- Diagnostic messages are now printed on stderr, so the regular output is always pipeable.
 
 
 ### Internals
 
 - The log is no longer checksummed to detect manual edits.
-- Instead, log reading has become more strict to ensure that only sorted and overlap-free records exist even after manual edits.
+- Log reading has become more strict to ensure that only sorted and overlap-free records exist even after manual edits.
 - Migration: Stored free days are converted to the new format supporting half days.
+- Holistic dry run handling: Dry runs now behave exactly like the real command by operating on a temporary copy of all data.
 
 ### Fixed bugs
 
