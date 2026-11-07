@@ -51,7 +51,7 @@ Let's inspect what has now been logged:
 10:30 – 16:00 | 5 h 30 m  (project) "Development"
               = 6 h
 
-<span class="t-bold">Wed, 22.06.: 1 records</span>
+<span class="t-bold">Wed, 22.06.: 1 record</span>
 10:00 – 10:30 | 30 m  (project) "Discussion with colleague"
               = 30 m
 
@@ -103,7 +103,7 @@ For that, we can do one of the following:
         markdown: html
 
     <pre><code>$ <span class="t-cmd">work</span> <span class="t-param">ls --include-active</span>
-    <span class="t-bold">Wed, 22.06.: 1 records (+ active run)</span>
+    <span class="t-bold">Wed, 22.06.: 1 record (+ active run)</span>
     10:00 – 10:30 | 30 m  (project) "Discussion with colleague"
     <span class="t-blue">10:45 ~</span>       | 53 m
                   = 1 h 23 m
@@ -116,7 +116,7 @@ For that, we can do one of the following:
         markdown: html
 
     <pre><code>$ <span class="t-cmd">work</span> <span class="t-param">day</span>
-    <span class="t-bold">Wed, 22.06.: 1 records (+ active run)</span>
+    <span class="t-bold">Wed, 22.06.: 1 record (+ active run)</span>
     10:00 – 10:30 | 30 m        (project) "Discussion with colleague"
                   <span class="t-gray">· 15 m break</span>
     <span class="t-blue">10:45 ~</span>       | 53 m
@@ -173,11 +173,11 @@ Let's check by *only viewing entries with category "social"*:
     markdown: html
 
 <pre><code>$ <span class="t-cmd">work</span> <span class="t-param">ls -w --Fc social</span>
-<span class="t-bold">Mon, 20.06.: 1 records</span>
+<span class="t-bold">Mon, 20.06.: 1 record</span>
 10:00 – 13:00 | 3 h  (social)
               = 3 h
 
-<span class="t-bold">Total: 1 records, 3 h worked</span>
+<span class="t-bold">Total: 1 record, 3 h worked</span>
 </code></pre>
 ///
 
