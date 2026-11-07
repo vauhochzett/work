@@ -56,9 +56,9 @@ You still have to manually select individual entries or type `all`:
 Edit mode – Thursday, 08.10.2026
 
   [0] 09:00 – 10:30 (meet) "Sprint planning"
-      10:30 – 12:15 (dev) "Ticket 123"        # does not match, so it can't be selected
+<span class="t-gray">      10:30 – 12:15 (dev) "Ticket 123"</span>        # does not match, so it can't be selected
   [1] 13:00 – 13:30 (meet) "Daily Plan"
-      13:30 – 17:00 (dev) "Ticket 123"
+<span class="t-gray">      13:30 – 17:00 (dev) "Ticket 123"</span>
 
 Enter nothing to cancel, or
 Enter one or more indices [0..1] separated by a space, or
