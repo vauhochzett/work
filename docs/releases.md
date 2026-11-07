@@ -2,13 +2,14 @@
 
 ## 1.2: Half free days, filtering in interactive modes, and a new export format
 
-Currently released version: `1.2.2` (2026-10-26)
+Currently released version: `1.2.3` (2026-11-06)
 
 ### Breaking changes and deprecations
 
 - `--month` now expects a month with an optional year (`m[/Y]`).
 - `free-days --add-vacation` now always expects a begin and an end day.
 - `export` now expects a format argument.
+- `cancel`ling without an active run is now considered an invalid operation and fails.
 - Manual edits of the log no longer trigger a warning. Use the new `verify` mode to check whether the log is valid.
 
 ### Half free days
@@ -122,6 +123,8 @@ To learn more, see [Configuration &rarr; Rounding precision](../configuration#ro
 - `list --with-breaks` now marks breaks with a mid dot (`·`) instead of a tilde (`~`).
 - `start` and `switch` now only print the start time, without the date.
 - `add` now also prints the recorded time, e.g., `Added a record [...] (1 h 30 m recorded)`.
+- `list` now writes `record` (singular) if there is only one.
+- `hours` now only warns about overlaps if one of the calculated periods actually overlaps a stored record.
 - Diagnostic messages are now printed on stderr, so the regular output is always pipeable.
 
 
@@ -136,6 +139,8 @@ To learn more, see [Configuration &rarr; Rounding precision](../configuration#ro
 
 - `edit` / `remove`: When filtering, the selection no longer offers entries that are not shown.
 - `switch` at the start time with a different restart time no longer simply cancels the run.
+- `resume`: The last record is no longer lost if the run can't be restarted.
+- `list --include-active`: The active run is no longer counted twice in the total.
 - A missing configuration directory is now created if it doesn't exist yet.
 
 
