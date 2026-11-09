@@ -1066,9 +1066,7 @@ Due to a bug in previous versions, not all entries were migrated from protocol v
 	+ When a new task is started, this command suffices to save the completed work and immediately start a new task.
 
 
-## 0.9: Category and message
-
-Final release version: `0.91`
+## 0.91: Category and message
 
 - Entries can now have an optional category and message.
 - Both can be added when stopping a run or adding an entry.
