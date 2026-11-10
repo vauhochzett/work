@@ -15,7 +15,7 @@
 ## Key concepts
 
 1. Human-readable **text files for storage**. This makes it easy to track the log with `git` or perform manual edits.
-2. The tool **does not run continously** and instead maintains the current state on disk.
+2. The tool **does not run continuously** and instead maintains the current state on disk.
 3. **Global work status**, meaning any terminal can be used to check or update it.
 
 ## Features
