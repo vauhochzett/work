@@ -1,0 +1,13 @@
+/* Colors of work's terminal output (256-color codes in comments) */
+.term .t-bold   { font-weight: bold; }
+.term .t-blue   { color: #005fff; }  /*  27: active run */
+.term .t-gray   { color: #6c6c6c; }  /* 242: breaks, hints */
+.term .t-orange { color: #ff5f00; }  /* 202: undertime */
+.term .t-red    { color: #ff0000; }  /*   9: errors */
+.term .t-green  { color: #00af00; }  /*  34: success */
+
+/* Shell syntax highlighting of command lines */
+.term .t-cmd     { color: #164cc9; }  /* fish_color_command */
+.term .t-param   { color: #4319cc; }  /* fish_color_param */
+.term .t-quote   { color: #4c3499; }  /* fish_color_quote */
+.term .t-op      { color: #00a6b2; }  /* fish_color_operator */
